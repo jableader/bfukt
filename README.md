@@ -37,7 +37,7 @@ Declaring a variable is simple, and all of the following are valid and do what
 you would expect them to. Names are characters only, sorry, no underscores or 
 numbers.
 
-***
+```
 var j
 var foo, bar
 
@@ -49,7 +49,7 @@ var a, b = 'c'
 
 \# Declare c, and set it's value to be the same as a
 var c = a
-***
+```
 
 ### Arithmatic
 This is where things get a little interesting. You may set a variable to have
@@ -59,7 +59,7 @@ be zero after the operation. This allows much smaller brainfuck code.
 
 You may add, subtract and set values.
 
-***
+```
 \# Set a to 5
 a = 5
 
@@ -83,4 +83,4 @@ a = _b
 
 \# Add c to a, subtract c from b and leave c at zero
 +a, -b = _c
-***
+```
