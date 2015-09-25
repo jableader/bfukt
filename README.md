@@ -1,5 +1,5 @@
 #bfukt
-###*A silly little language that compiles into a sillier, little one*
+####*A silly little language that compiles into a sillier, little one*
 
 Have you ever noticed that most the languages that compile to brainfuck dont 
 have the same neat little heart that brainfuck does? They're either far too bf
@@ -41,13 +41,13 @@ numbers.
 var j
 var foo, bar
 
-#### Declare foo, set to 5
+\# Declare foo, set to 5
 var foo = 5
 
-#### Declare a & b, they will both have the ASCII value of 'c'
+\# Declare a & b, they will both have the ASCII value of 'c'
 var a, b = 'c'
 
-#### Declare c, and set it's value to be the same as a
+\# Declare c, and set it's value to be the same as a
 var c = a
 ***
 
@@ -60,27 +60,27 @@ be zero after the operation. This allows much smaller brainfuck code.
 You may add, subtract and set values.
 
 ***
-#### Set a to 5
+\# Set a to 5
 a = 5
 
-#### Add 5 to a
+\# Add 5 to a
 +a = 5
 
-#### Subtract 5 from a
+\# Subtract 5 from a
 -a = 5
 
-#### Set a to 'A'
+\# Set a to 'A'
 a = 'A'
 
-#### Set a to b, with b keeping its original value
+\# Set a to b, with b keeping its original value
 a = b
 
-#### Set a to b, leaving b at zero
+\# Set a to b, leaving b at zero
 a = _b
 
-#### Add 5 to a and b
+\# Add 5 to a and b
 +a, +b = 5
 
-#### Add c to a, subtract c from b and leave c at zero
+\# Add c to a, subtract c from b and leave c at zero
 +a, -b = _c
 ***
