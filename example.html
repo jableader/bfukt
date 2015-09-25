@@ -1,0 +1,144 @@
+<html>
+<head>
+	<script type="text/javascript" src="newbf.js"></script>
+</head>
+<body>
+	<textarea id="txtBox" style="width:40%; height: 200px"></textarea>
+	<textarea id="txtBoxOut" style="width:40%; height: 200px"></textarea>
+	<br />
+	<button onclick="javascript:run()">Compile</button>
+	
+	<script type="text/javascript">
+		window.onload = function() {
+			document.getElementById("txtBox").value = localStorage["code"];
+			console.log("loaded");
+		}
+		
+		function run(){
+			var el = document.getElementById("txtBox");
+			localStorage["code"] = el.value
+			
+			var lines = el.value.split('\n');
+			var textBox = document.getElementById("txtBoxOut"); 
+			try {
+				textBox.value = parse({lines:lines})[0]
+			} catch (ex) {
+				textBox.value = ex;
+			}
+		}
+	</script>
+	
+	<div style="font-family:monospace">
+	<h2>Syntax</h2>
+	
+	<h3>General Notes</h3>
+	<p>
+		If the variable on the LHS of an expression is preceded by an underscore
+		it means that after the operation that variable will be left as ZERO.
+		
+		This allows smaller code because in bf to allow the variable to keep its
+		value it must be copied out.
+		
+		So in general it is prefferable to allow things to go to zero.
+		
+		If you do not allow it to go to zero, then the underlying address that
+		the variable points to will be changed. This is so we can copy
+		out without having to copy back
+	</p>
+	<p>
+		This language has significant whitespace, meaning to enter a new scope 
+		you increase indentation and to exit scope you return to your original
+		indentation
+	</p>
+	
+	<p>
+		_in is a special value. It reads from input. Be careful, because a, b = _in
+		will result reading in two values rather than reading one, and having a
+		and b be the same
+	</p>
+	
+	<h3>Variable declaration</h3>
+	
+	<p>
+		var a <br />
+		var d, e = '0' <br />
+		var f, i = _d <br />
+		var f, i = _in <br />
+	</p>
+	
+	<h3>Printing</h3>
+	
+	<p>
+		print a <br />
+		print a, b, c
+	</p>
+		
+	
+	<h3>Variable assignment</h3>
+	
+	<h4>Add 5 to a</h4>
+	<p>
+		+a = 5
+	</p>
+	
+	<h4>Subtract 5 from a</h4>
+	<p>
+		-a = 5
+	</p>
+	
+	<h4>Add n to a, Subtract n from b and leave n at 0</h4>
+	<p>
+		+a, -b = _n
+	</p>
+	
+	<h4>Set z to 'a'</h4>
+	<p>
+		z = 'a'
+	<p>
+	
+	<h4>Subtract '0' from a, add '0' to b, set c to '0'</h4>
+	<p>
+		-a, +b, c = '0'
+	</p>
+	
+	<h4>Set a to b, leave b as its value</h4>
+	<p>
+		a = b
+	</p>
+	
+	
+	<h3>If Statments</h3>
+
+	<p>
+		if _varName <br />
+		&nbsp;&nbsp;{code}
+	</p>
+		----
+	<p>
+		if varName <br />
+		&nbsp;&nbsp;{code}
+	</p>
+		----
+	<p>
+		if _varName <br />
+		&nbsp;&nbsp;{code} <br />
+		else <br />
+		&nbsp;&nbsp;{more code}
+	</p>
+	
+	<h3>While loops</h3>
+	
+	<h4>Standard loop</h4>
+	<p>
+		while varName <br />
+		&nbsp;&nbsp;{code}
+	</p>
+	
+	<h4>Decrement varName at the end of the loop</h4>
+	<p>
+		while -varName <br />
+		&nbsp;&nbsp;{code}
+	</p>
+
+</body>
+</html>
