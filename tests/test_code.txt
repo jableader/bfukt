@@ -1,5 +1,4 @@
 . Print '0'
-.. code
 var a = '0'
 print a
 
@@ -7,7 +6,6 @@ print a
 0
 
 . Count to 5
-.. code
 var i = 5
 var c = '0'
 
@@ -17,3 +15,17 @@ while -i
 
 .. output
 01234
+
+. Print a to f using inputs
+var start = _in
+var amount = 5
+
+while -amount
+	print start
+	+start = 1
+
+.. input
+a
+
+.. output
+abcde

@@ -1,7 +1,8 @@
-## Easier to simply write a parser for these tests
 fs = require('fs')
 bfukt = require('../compiler.coffee')
 brainfuck = require('../brainfuck.coffee')
+
+throwOnException = false
 
 String::startsWith ?= (s) -> @indexOf(s) == 0
 String::isWhitespace = () -> @trim().length == 0
@@ -40,7 +41,7 @@ readTests = (onTestRead, onFinished) ->
 		while index < lines.length
 			assert("Should be on title line", isTitleLine())
 			test = { name: headerText() }
-			readToNextHeader()
+			test.code = readToNextHeader()
 			
 			until index >= lines.length or isTitleLine()
 				contentName = headerText()
@@ -50,20 +51,51 @@ readTests = (onTestRead, onFinished) ->
 			onTestRead(test)
 
 		onFinished?()
-		
-runTest = ({name, code, input, output}) ->
+
+runSafe = (method) ->
+	if throwOnException
+		return [true, method()]
+	else
+		try
+			return [true, method()]
+		catch ex
+			return [false, ex]
+
+runTest = (code, input) ->
+	[err, compiledCode] = runSafe(() -> bfukt.compile({lines: code})[0])
+	if not err
+		return [false, 'Compiler: ' + compiledCode]
+	
+	[err, output] = runSafe(() -> brainfuck.run(compiledCode, input)) 
+	if not err
+		return [false, 'Interpreter: ' + output]
+	
+	return [true, output]
+
+runTestAndPrintResult = ({name, code, input, output}) ->
+	throw "Dont forget the .. code section" if not code?
+	
 	output = output?.join('\n') ? ''
-	input = input?.split('') ? []
+	input = input?.join('\n').split('') ? []
 	
-	compiled_code = bfukt.compile({lines: code})[0]
-	actual_output = brainfuck.run(compiled_code, input)
+	[noErrors, result] = runTest(code, input)
 	
-	wasSuccess = output == actual_output
-	result = "'#{name}': #{wasSuccess}\n"
-	if !wasSuccess
-		result += "Expected: \t #{output}\n"
-		result += "Actual:\t\t #{actual_output}\n"
+	additionalText = ''
+	str_result = ''
 	
-	console.log(result)
+	if noErrors	
+		wasSuccess = output == result
 		
-readTests(runTest)
+		if wasSuccess
+			str_result = 'success'
+		else
+			str_result = 'failed'
+			additionalText = "Expected: \t #{output}\n" +
+				"Actual:\t\t #{result}\n"
+	else
+		str_result = 'error'
+		additionalText = result
+	
+	console.log("'#{name}': #{str_result}\n#{additionalText}\n")
+		
+readTests(runTestAndPrintResult)
