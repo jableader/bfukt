@@ -132,7 +132,10 @@ class Func
 		
 		childArgs = { scope: myScope, lines: @lines, in_pt: in_pt }
 		
-		return parse(childArgs, FUNCTION)
+		result = parse(childArgs, FUNCTION)
+		myScope.exit()
+		
+		return result
 		
 gotoDo = (in_pt, getPt, code, destinations...) ->
 	s = ""
