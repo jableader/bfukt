@@ -29,3 +29,35 @@ a
 
 .. output
 abcde
+
+. Simple if statement with else (true condition)
+var condition = 1
+var ch = _in
+
+if condition
+	print ch
+else
+	+ch = 1
+	print ch
+	
+.. input
+a
+
+.. output
+a
+
+. Simple if statement with else (false condition)
+var condition = 0
+var ch = _in
+
+if condition
+	print ch
+else
+	+ch = 1
+	print ch
+	
+.. input
+a
+
+.. output
+b
