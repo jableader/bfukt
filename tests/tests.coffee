@@ -1,6 +1,6 @@
 fs = require('fs')
 bfukt = require('../compiler.coffee')
-brainfuck = require('../brainfuck.coffee')
+brainfuck = require('./brainfuck.coffee')
 
 throwOnException = false
 
