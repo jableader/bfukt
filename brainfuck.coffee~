@@ -59,10 +59,5 @@ run = (code, inputs) ->
 				throw "Invalid char '#{code[pc]}'"
 		
 	return output
-
-if window?
-	exports = window.brainfuck = {}
-else
-	exports = module.exports = {}
-
-exports.run = run
+	
+window.run_bf = run

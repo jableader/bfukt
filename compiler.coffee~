@@ -411,12 +411,6 @@ parse = (args, type) ->
 	
 	args.scope = args.scope.exit()
 	return [s, args.in_pt]
-
-
-if window?
-	exports = window.bfukt = {}
-else
-	exports = module.exports = {}
-
-exports.compile = parse
-exports.optimise = (s) -> s
+	
+window.parse = parse
+window.optimise = (s) -> s

@@ -1,0 +1,19 @@
+. Print '0'
+.. code
+var a = '0'
+print a
+
+.. output
+0
+
+. Count to 5
+.. code
+var i = 5
+var c = '0'
+
+while -i
+	print c
+	+c = 1
+
+.. output
+01234

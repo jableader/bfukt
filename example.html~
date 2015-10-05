@@ -22,7 +22,7 @@
 			var lines = el.value.split('\n');
 			var textBox = document.getElementById("txtBoxOut"); 
 			try {
-				textBox.value = bfukt.compile({lines:lines})[0]
+				textBox.value = parse({lines:lines})[0]
 			} catch (ex) {
 				textBox.value = ex;
 			}
