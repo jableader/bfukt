@@ -1,5 +1,6 @@
-#bfukt
-####*A silly little language that compiles into a sillier, little one*
+# bfukt
+
+#### *A silly little language that compiles into a sillier, little one*
 
 Have you ever noticed that most the languages that compile to brainfuck dont 
 have the same neat little heart that brainfuck does? They're either far too bf
@@ -10,21 +11,21 @@ I have tried to design a language and compiler that can create neat little bf
 code that looks like it could have been handwritten, but is still better than
 simple macros.
 
-##To Build the Compiler
+## To Build the Compiler
 Simply compile it in coffeescript, there is no additional assemblies and what 
 not
 
-##Usage
+## Usage
 Have a look in the example page to see it embedded within a web page, basically
 all you have to do is call `parse`, passing in a javascript object with a 
 property `'lines'` that is an array of the lines of code.
 
-##Apologies
-It's a WIP, and I'm not too serious about it. As such the compiler isnt perfect,
-and the error messages are not particularly usefule. Feel free to tell me about
+## Apologies
+It's a ~~WIP~~ (abandoned), and I'm not too serious about it. As such the compiler isnt perfect,
+and the error messages are not particularly useful. Feel free to tell me about
 any bugs you find, or better yet, fix them for me.
 
-##The Language
+## The Language
 The language is dynamically typed, although that said, there is only two types.
 The two types are functions and variables, and they can be used interchangable 
 (first class functions).
@@ -32,10 +33,10 @@ The two types are functions and variables, and they can be used interchangable
 It also has significant whitespace, meaning that you need to be consistant with
 your indenting, and that each new line is a new statement.
 
-###Comments
+### Comments
 A line that starts with a `#hash` is a comment
 
-###Declaring a variable
+### Declaring a variable
 Declaring a variable is simple, and all of the following are valid and do what
 you would expect them to. Names are characters only, sorry, no underscores or 
 numbers.
