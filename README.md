@@ -55,7 +55,7 @@ var a, b = 'c'
 var c = a
 ```
 
-### Arithmatic
+### Arithmetic
 This is where things get a little interesting. You may set a variable to have
 the value of a literal, a character or another variable. If the variable is 
 prefixed by an underscore, then that tells the compiler that its value may
